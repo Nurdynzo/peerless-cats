@@ -1,8 +1,8 @@
 # Peerless DevOps Challenge
-Overview
+### Overview
 This document provides comprehensive documentation for deploying the Cats Sinatra application (versions 1.0.0 and 2.0.1) using a zero-downtime deployment strategy on AWS ECS with Docker containers. The deployment is automated through GitHub Actions CI/CD pipeline.
 
-Table of Contents
+###  Table of Contents
 Architecture Overview
 
 Prerequisites
@@ -21,7 +21,7 @@ Pros and Cons of Chosen Tools
 
 Maintenance and Operations
 
-Architecture Overview
+### Architecture Overview
 The solution uses the following components:
 
 AWS ECS (Fargate): Container orchestration service for fault-tolerant deployment
@@ -38,7 +38,7 @@ AWS CloudWatch: Monitoring and logging
 
 Architecture Diagram (Note: Add actual diagram URL)
 
-Prerequisites
+### Prerequisites
 Before using this deployment system, ensure you have:
 
 AWS account with appropriate permissions
@@ -51,7 +51,7 @@ Docker installed locally for development/testing
 
 GitHub repository with the Cats application code
 
-Deployment Workflow
+### Deployment Workflow
 Initial Setup (Version 1.0.0)
 Prepare the ECS Environment:
 
@@ -61,7 +61,7 @@ Configure ECS service with application load balancer
 
 Set up task definitions with health checks
 
-First Deployment:
+### First Deployment:
 
 Push code to the v1.0.0 branch
 
@@ -75,7 +75,7 @@ Update ECS task definition
 
 Deploy to ECS with zero downtime
 
-Upgrading to Version 2.0.1
+### Upgrading to Version 2.0.1
 Merge changes to the main branch
 
 Tag the release as v2.0.1
@@ -92,7 +92,7 @@ Route traffic to new version
 
 Drain connections from old version
 
-Zero-Downtime Deployment Strategy
+### Zero-Downtime Deployment Strategy
 The solution implements zero-downtime deployment through:
 
 ECS Rolling Updates: ECS automatically replaces tasks in batches
@@ -113,7 +113,7 @@ Maximum percent = 200%
 
 Health check grace period = 60 seconds
 
-Monitoring and Observability
+### Monitoring and Observability
 CloudWatch Metrics
 CPU/Memory utilization
 
@@ -123,7 +123,7 @@ Error rates
 
 Latency metrics
 
-Logging
+### Logging
 Container logs streamed to CloudWatch Logs
 
 Access logs from load balancer
@@ -137,7 +137,7 @@ Request timing metrics
 
 Error tracking
 
-Alerting
+### Alerting
 Configured CloudWatch Alarms for:
 
 High error rates (>5%)
@@ -146,7 +146,7 @@ High latency (>500ms)
 
 Service instability
 
-Rollback Procedure
+### Rollback Procedure
 To rollback to previous version:
 
 Manual Rollback:
@@ -161,7 +161,7 @@ ECS will automatically stop deployment if health checks fail
 
 CloudWatch alarms can trigger rollback automation
 
-Tools and Technologies
+### Tools and Technologies
 AWS ECS
 Purpose: Container orchestration
 
