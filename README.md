@@ -2,54 +2,23 @@
 ### Overview
 This document provides comprehensive documentation for deploying the Cats Sinatra application (versions 1.0.0 and 2.0.1) using a zero-downtime deployment strategy on AWS ECS with Docker containers. The deployment is automated through GitHub Actions CI/CD pipeline.
 
-###  Table of Contents
-Architecture Overview
-
-Prerequisites
-
-Deployment Workflow
-
-Zero-Downtime Deployment Strategy
-
-Monitoring and Observability
-
-Rollback Procedure
-
-Tools and Technologies
-
-Pros and Cons of Chosen Tools
-
-Maintenance and Operations
-
 ### Architecture Overview
-The solution uses the following components:
-
-AWS ECS (Fargate): Container orchestration service for fault-tolerant deployment
-
-Docker: Containerization of the Sinatra application
-
-GitHub Actions: CI/CD pipeline for automated deployments
-
-Amazon ECR: Container registry for Docker images
-
-AWS IAM: Secure role-based access control
-
-AWS CloudWatch: Monitoring and logging
-
-Architecture Diagram (Note: Add actual diagram URL)
+- The solution uses the following components:
+- AWS ECS (Fargate): Container orchestration service for fault-tolerant deployment
+- Docker: Containerization of the Sinatra application
+- GitHub Actions: CI/CD pipeline for automated deployments
+- Amazon ECR: Container registry for Docker images
+- AWS IAM: Secure role-based access control
+- AWS CloudWatch: Monitoring and logging
+- Architecture Diagram (Note: Add actual diagram URL)
 
 ### Prerequisites
-Before using this deployment system, ensure you have:
-
-AWS account with appropriate permissions
-
-ECS cluster configured ("Staging-Cluster" in our case)
-
-IAM role with ECS/ECR permissions configured in GitHub Secrets as ROLE_TO_ASSUME
-
-Docker installed locally for development/testing
-
-GitHub repository with the Cats application code
+- Before using this deployment system, ensure you have:
+- AWS account with appropriate permissions
+- ECS cluster configured ("Staging-Cluster" in our case)
+- IAM role with ECS/ECR permissions configured in GitHub Secrets as ROLE_TO_ASSUME
+- Docker installed locally for development/testing
+- GitHub repository with the Cats application code
 
 ### Deployment Workflow
 Initial Setup (Version 1.0.0)
