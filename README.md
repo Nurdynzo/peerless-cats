@@ -22,27 +22,18 @@ This document provides comprehensive documentation for deploying the Cats Sinatr
 
 ### Deployment Workflow
 Initial Setup (Version 1.0.0)
-Prepare the ECS Environment:
-
-Create an ECS cluster named "Staging-Cluster"
-
-Configure ECS service with application load balancer
-
-Set up task definitions with health checks
+- Prepare the ECS Environment:
+- Create an ECS cluster named "Staging-Cluster"
+- Configure ECS service with application load balancer
+- Set up task definitions with health checks
 
 ### First Deployment:
-
-Push code to the v1.0.0 branch
-
-GitHub Actions workflow will automatically:
-
-Build Docker image
-
-Push to Amazon ECR
-
-Update ECS task definition
-
-Deploy to ECS with zero downtime
+- Push code to the v1.0.0 branch
+- GitHub Actions workflow will automatically:
+  - Build Docker image
+  - Push to Amazon ECR
+  - Update ECS task definition
+  - Deploy to ECS with zero downtime
 
 ### Upgrading to Version 2.0.1
 Merge changes to the main branch
