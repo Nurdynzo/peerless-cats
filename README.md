@@ -36,200 +36,98 @@ Initial Setup (Version 1.0.0)
   - Deploy to ECS with zero downtime
 
 ### Upgrading to Version 2.0.1
-Merge changes to the main branch
-
-Tag the release as v2.0.1
-
-The same GitHub Actions workflow will:
-
-Build new Docker image
-
-Perform blue-green deployment
-
-Verify health checks
-
-Route traffic to new version
-
-Drain connections from old version
+- Merge changes to the main branch
+- Tag the release as v2.0.1
+- The same GitHub Actions workflow will:
+  - Build new Docker image
+  - Perform blue-green deployment
+  - Verify health checks
+  - Route traffic to new version
+  - Drain connections from old version
 
 ### Zero-Downtime Deployment Strategy
 The solution implements zero-downtime deployment through:
-
-ECS Rolling Updates: ECS automatically replaces tasks in batches
-
-Health Checks: Ensures new containers are healthy before receiving traffic
-
-Connection Draining: Allows in-flight requests to complete
-
-Load Balancer Integration: Smoothly transitions traffic between old and new versions
+- ECS Rolling Updates: ECS automatically replaces tasks in batches
+- Health Checks: Ensures new containers are healthy before receiving traffic
+- Connection Draining: Allows in-flight requests to complete
+- Load Balancer Integration: Smoothly transitions traffic between old and new versions
 
 Key parameters configured:
-
-wait-for-service-stability: true in GitHub Actions
-
-Minimum healthy percent = 100%
-
-Maximum percent = 200%
-
-Health check grace period = 60 seconds
+- wait-for-service-stability: true in GitHub Actions
+- Minimum healthy percent = 100%
+- Maximum percent = 200%
+- Health check grace period = 60 seconds
 
 ### Monitoring and Observability
 CloudWatch Metrics
-CPU/Memory utilization
-
-Request counts
-
-Error rates
-
-Latency metrics
+- CPU/Memory utilization
+- Request counts
+- Error rates
+- Latency metrics
 
 ### Logging
 Container logs streamed to CloudWatch Logs
-
-Access logs from load balancer
-
-Custom Metrics
-Added to application:
-
-/health endpoint for liveness/readiness probes
-
-Request timing metrics
-
-Error tracking
-
-### Alerting
-Configured CloudWatch Alarms for:
-
-High error rates (>5%)
-
-High latency (>500ms)
-
-Service instability
+- Access logs from load balancer
+- Custom Metrics
 
 ### Rollback Procedure
 To rollback to previous version:
-
-Manual Rollback:
-
-Re-run previous successful GitHub Actions workflow
-
-OR use ECS console to revert to previous task definition
-
-Automated Rollback (if health checks fail):
-
-ECS will automatically stop deployment if health checks fail
-
-CloudWatch alarms can trigger rollback automation
+- Manual Rollback:
+  - Re-run previous successful GitHub Actions workflow
+  - Use ECS console to revert to previous task definition
+- Automated Rollback (if health checks fail):
+  - ECS will automatically stop deployment if health checks fail
+  - CloudWatch alarms can trigger rollback automation
 
 ### Tools and Technologies
-AWS ECS
-Purpose: Container orchestration
-
-Why Chosen: Fully managed, integrates with other AWS services
-
-Configuration: Fargate launch type for serverless operation
-
+- AWS ECS
+  - Purpose: Container orchestration
+  - Why Chosen: Fully managed, integrates with other AWS services
+  - Configuration: Fargate launch type for serverless operation
 GitHub Actions
-Purpose: CI/CD pipeline
+  - Purpose: CI/CD pipeline
+  - Why Chosen: Tight GitHub integration, easy configuration
+  - Workflow: Defined in .github/workflows/deploy.yml
+- Docker
+  - Purpose: Containerization
+  - Why Chosen: Standardization, portability
+  - Image: Built from provided Sinatra application
 
-Why Chosen: Tight GitHub integration, easy configuration
-
-Workflow: Defined in .github/workflows/deploy.yml
-
-Docker
-Purpose: Containerization
-
-Why Chosen: Standardization, portability
-
-Image: Built from provided Sinatra application
-
-Pros and Cons of Chosen Tools
-AWS ECS
-Pros:
-
-Fully managed service
-
-Tight AWS integration
-
-Supports zero-downtime deployments
-
-Cost-effective with Fargate
-
-Cons:
-
-AWS lock-in
-
-Less flexible than Kubernetes for complex scenarios
-
-GitHub Actions
-Pros:
-
-Native GitHub integration
-
-Easy YAML configuration
-
-Large marketplace of actions
-
-Cons:
-
-Limited compared to dedicated CI/CD tools
-
-Can become complex for large workflows
-
-Docker
-Pros:
-
-Standardization
-
-Isolation of dependencies
-
-Reproducible environments
-
-Cons:
-
-Additional complexity
-
-Requires Docker expertise
-
-Maintenance and Operations
-Routine Tasks
-Monitor CloudWatch dashboards
-
-Review deployment logs
-
-Update dependencies in Dockerfile
-
-Scaling
-Configure ECS auto-scaling based on CPU/memory metrics
-
-Adjust task count based on load balancer metrics
-
-Cost Optimization
-Right-size Fargate task CPU/memory
-
-Clean up old ECR images
-
-Monitor and adjust auto-scaling parameters
-
-Troubleshooting
-Common issues and solutions:
-
-Deployment fails health checks:
-
-Verify /health endpoint
-
-Check container logs
-
-Adjust health check grace period
-
-Build failures:
-
-Check Dockerfile for errors
-
-Verify dependencies
-
-Permission errors:
-
-Verify IAM role configuration
-
-Check GitHub Secrets
+### Pros and Cons of Chosen Tools
+- AWS ECS
+  - Pros:
+    - Fully managed service
+    - Tight AWS integration
+    - Supports zero-downtime deployments
+    - Cost-effective with Fargate
+  - Cons:
+    - AWS lock-in
+    - Less flexible than Kubernetes for complex scenarios
+- GitHub Actions
+  - Pros:
+    - Native GitHub integration
+    - Easy YAML configuration
+    - Large marketplace of actions
+  - Cons:
+    - Limited compared to dedicated CI/CD tools
+    - Can become complex for large workflows
+- Docker
+  - Pros:
+    - Standardization
+    - Isolation of dependencies
+    - Reproducible environments
+  - Cons:
+    - Additional complexity
+    - Requires Docker expertise
+### Maintenance and Operations
+- Routine Tasks
+  - Monitor CloudWatch dashboards
+  - Review deployment logs
+  - Update dependencies in Dockerfile
+- Scaling
+  - Configure ECS auto-scaling based on CPU/memory metrics
+  - Adjust task count based on load balancer metrics
+- Cost Optimization
+  - Right-size Fargate task CPU/memory
+  - Clean up old ECR images
+  - Monitor and adjust auto-scaling parameters
