@@ -47,9 +47,13 @@ Initial Setup (Version 1.0.0)
 - The same GitHub Actions workflow will:
   - Build new Docker image
   - Perform blue-green deployment
+    <img width="1206" alt="image" src="https://github.com/user-attachments/assets/02f554a1-0c99-4863-9a1b-f7370c542cd8" />
+
   - Verify health checks
   - Route traffic to new version
   - Drain connections from old version
+    ![image](https://github.com/user-attachments/assets/c3ba1cd4-6089-4644-a8fb-2500ab09fc7a)
+
 
 ### Zero-Downtime Deployment Strategy
 The solution implements zero-downtime deployment through:
