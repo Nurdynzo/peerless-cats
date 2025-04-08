@@ -32,6 +32,8 @@ Initial Setup (Version 1.0.0)
 - GitHub Actions workflow will automatically:
   - Build Docker image
   - Push to Amazon ECR
+    <img width="998" alt="image" src="https://github.com/user-attachments/assets/10fbfa0d-4100-4c68-bb54-8ee913b44e26" />
+
   - Update ECS task definition
   - Deploy to ECS with zero downtime
 
