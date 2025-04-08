@@ -46,6 +46,8 @@ Initial Setup (Version 1.0.0)
 - Tag the release as v2.0.1
 - The same GitHub Actions workflow will:
   - Build new Docker image
+    <img width="1012" alt="image" src="https://github.com/user-attachments/assets/5f2756ec-e7eb-4a15-9b97-9ac3f2ef28bf" />
+
   - Perform blue-green deployment
     <img width="1206" alt="image" src="https://github.com/user-attachments/assets/02f554a1-0c99-4863-9a1b-f7370c542cd8" />
 
