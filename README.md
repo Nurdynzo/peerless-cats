@@ -30,12 +30,16 @@ Initial Setup (Version 1.0.0)
 ### First Deployment:
 - Push code to the v1.0.0 branch
 - GitHub Actions workflow will automatically:
+  <img width="1409" alt="image" src="https://github.com/user-attachments/assets/940f8bb3-98c1-48bd-a7e5-1c8d17eef8cf" />
+
   - Build Docker image
   - Push to Amazon ECR
     <img width="998" alt="image" src="https://github.com/user-attachments/assets/10fbfa0d-4100-4c68-bb54-8ee913b44e26" />
 
   - Update ECS task definition
   - Deploy to ECS with zero downtime
+    <img width="1216" alt="image" src="https://github.com/user-attachments/assets/6bf3da24-c40f-475e-9686-7ce6a7314b4b" />
+
 
 ### Upgrading to Version 2.0.1
 - Merge changes to the main branch
