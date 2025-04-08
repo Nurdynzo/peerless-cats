@@ -10,7 +10,7 @@ This document provides comprehensive documentation for deploying the Cats Sinatr
 - Amazon ECR: Container registry for Docker images
 - AWS IAM: Secure role-based access control
 - AWS CloudWatch: Monitoring and logging
-- Architecture Diagram (Note: Add actual diagram URL)
+<img width="970" alt="image" src="https://github.com/user-attachments/assets/2bccccbd-0ca9-43c2-a7bb-9e7d135bb98e" />
 
 ### Prerequisites
 - Before using this deployment system, ensure you have:
