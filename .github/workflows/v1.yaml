@@ -8,7 +8,7 @@ env:
   AWS_REGION: eu-west-2
   ECS_CLUSTER: staging-cluster
   ECR_REPOSITORY: ${{ github.event.repository.name }}
-  ECS_SERVICE: dev-${{ github.event.repository.name }}
+  ECS_SERVICE: ${{ github.event.repository.name }}
   ECS_TASK_DEFINITION: task-definition.json
   BRANCH: ${{ github.head_ref || github.ref_name }}
 
