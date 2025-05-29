@@ -1,21 +1,18 @@
-name: Docker Image CI
+name: Check Input Against Secret
 
 on:
   workflow_dispatch:
     inputs:
-      password:
-        description: 'Password'
+      user_input:
+        description: 'Input to compare with secret'
         required: true
-        default: ''
-        type: string
 
 jobs:
-
-  build:
-
+  check-secret:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      if: inputs.password == secrets.PASSWORD
-      run: echo "Hello"
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Compare input with secret
+        if: github.event.inputs.user_input == secrets.PASSWORD
+        run: echo "Input matches the secret!"
