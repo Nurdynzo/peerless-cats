@@ -9,14 +9,15 @@ on:
         default: ''
         type: string
 env:
-  PASSWORD: "123456"
+  build_version: "123456"
+  branch_version: "122324"
 
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
-    if: ${{ inputs.password == env.PASSWORD }}
+    if: ${{ env.build_version != env.branch_version }}
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
