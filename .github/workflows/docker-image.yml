@@ -8,13 +8,15 @@ on:
         required: true
         default: ''
         type: string
-
+env:
+  password: "123456"
+  
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
-    if: secrets.PASSWORD == '123456'
+    if: env.password == '123456'
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
