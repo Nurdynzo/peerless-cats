@@ -14,5 +14,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Compare input with secret
-        if: github.event.inputs.user_input == secrets.PASSWORD
+        if: ${{ github.event.inputs.user_input == secrets.PASSWORD }}
         run: echo "Input matches the secret!"
