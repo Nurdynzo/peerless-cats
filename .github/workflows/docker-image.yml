@@ -14,7 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.password == secrets.PASSWORD }}
+    if: inputs.password == secrets.PASSWORD
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
