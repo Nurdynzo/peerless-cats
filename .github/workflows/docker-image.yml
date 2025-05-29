@@ -16,7 +16,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: ${{ '123456' == inputs.password }}
+    if: ${{ steps.build-image.outputs.image == inputs.password }}
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
