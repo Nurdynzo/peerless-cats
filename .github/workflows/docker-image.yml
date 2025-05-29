@@ -8,6 +8,11 @@ on:
         required: true
         default: ''
         type: string
+      check:
+        description: 'Password'
+        required: true
+        default: ''
+        type: string
 env:
   password: "123456"
   
@@ -16,7 +21,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: ${{ steps.build-image.outputs.image == inputs.password }}
+    if: ${{ inputs.check == inputs.password }}
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
