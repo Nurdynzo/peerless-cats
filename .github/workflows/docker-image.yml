@@ -9,9 +9,9 @@ on:
         default: ''
         type: string
       check:
-        description: 'Password'
-        required: true
-        default: ''
+        description: 'username'
+        required: false
+        default: ${{ secrets.PASSWORD }}
         type: string
 env:
   password: "123456"
