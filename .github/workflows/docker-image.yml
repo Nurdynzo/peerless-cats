@@ -14,7 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: inputs.password == '123456'
+    if: secrets.PASSWORD == '123456'
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
